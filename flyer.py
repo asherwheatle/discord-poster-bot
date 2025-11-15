@@ -21,5 +21,3 @@ def generate_flyer(topic, description, date, time, location, bg = None):
     with open(output_path, "w", encoding="utf-8") as file:
         file.write(svg_data)
     return output_path
-
-generate_flyer("Cool Topic", "Learn about research.", "11/16/2025", "12:00 PM", "Marston")
