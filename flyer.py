@@ -14,11 +14,11 @@ def generate_flyer(topic, description, date, time, location, bg = None):
     svg_data = svg_data.replace("TIME", time)
     svg_data = svg_data.replace("LOCATION", location)
 
-    # if bg is None:
-    #     bg = "../assets/default.png"
+    if bg is None:
+        bg = os.path.join(script_dir, "assets", "default.png")
 
-    # image_tag = f'<image x="0" y="0" width="612" height="792" href="{bg}" />\n'
-    # svg_data = svg_data.replace("</defs>", f"</defs>\n{image_tag}")
+    image_tag = f'<image x="0" y="0" width="612" height="792" href="{bg}" />\n'
+    svg_data = svg_data.replace("</defs>", f"</defs>\n{image_tag}")
     
     # Creates an output folder
     output_dir = os.path.join(script_dir, "output")
@@ -31,3 +31,4 @@ def generate_flyer(topic, description, date, time, location, bg = None):
         file.write(svg_data)
 
     return output_path
+    
