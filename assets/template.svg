@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="8.5in" height="11in" viewBox="0 0 612 792">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Anton-Regular, Anton;
+        font-size: 80px;
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #27468a;
+        opacity: .8;
+      }
+
+      .cls-2 {
+        font-family: Roboto-Regular, Roboto;
+        font-size: 24px;
+        font-variation-settings: 'wght' 400, 'wdth' 100;
+      }
+    </style>
+  </defs>
+  <rect class="cls-3" width="612" height="792"/>
+  <text text-anchor="middle" class="cls-1" transform="translate(306 207)"><tspan x="0" y="0">TOPIC</tspan></text>
+  <text text-anchor="middle" class="cls-2" transform="translate(306 450)"><tspan x="0" y="0">TIME</tspan></text>
+ <text text-anchor="middle" class="cls-2" transform="translate(306 567)"><tspan x="0" y="0">DESCRIPTION</tspan></text>
+  <text text-anchor="middle" class="cls-2" transform="translate(306 416.53)"><tspan x="0" y="0">DATE</tspan></text>
+</svg>
