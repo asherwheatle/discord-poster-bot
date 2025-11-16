@@ -1,4 +1,5 @@
 import os
+import base64
 
 def generate_flyer(topic, description, date, time, location, bg = None):
     
@@ -15,9 +16,21 @@ def generate_flyer(topic, description, date, time, location, bg = None):
     svg_data = svg_data.replace("LOCATION", location)
 
     if bg is None:
-        bg = os.path.join(script_dir, "assets", "default.png")
+        default_bg_path = os.path.join(script_dir, "assets", "default.png")
+        with open(default_bg_path, "rb") as f:
+            encoded_bg = base64.b64encode(f.read()).decode("utf-8")
+        bg_data = f"data:image/png;base64,{encoded_bg}"
+    else:
+        # bg can be a file path (from upload) or already base64 string
+        if os.path.exists(bg):
+            with open(bg, "rb") as f:
+                encoded_bg = base64.b64encode(f.read()).decode("utf-8")
+            bg_data = f"data:image/png;base64,{encoded_bg}"
+        else:
+            # Assume bg is already a base64 string
+            bg_data = bg
 
-    image_tag = f'<image x="0" y="0" width="612" height="792" href="{bg}" />\n'
+    image_tag = f'<image x="0" y="0" width="612" height="792" href="{bg_data}" />\n'
     svg_data = svg_data.replace("</defs>", f"</defs>\n{image_tag}")
     
     # Creates an output folder
@@ -26,9 +39,10 @@ def generate_flyer(topic, description, date, time, location, bg = None):
 
 
     # Places creation in the output folder
-    output_path = os.path.join(output_dir, "flyer_output.svg")
-    with open(output_path, "w", encoding="utf-8") as file:
+    svg_path = os.path.join(output_dir, "flyer_output.svg")
+    with open(svg_path, "w", encoding="utf-8") as file:
         file.write(svg_data)
+    
+    return svg_path
 
-    return output_path
     
